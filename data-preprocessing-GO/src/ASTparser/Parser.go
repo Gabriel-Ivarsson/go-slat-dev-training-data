@@ -57,7 +57,9 @@ func generateContext(model int, node *ast.File) []string {
 		switch x := n.(type) {
 		case *ast.File:
 			packageName := sanitizeName(x.Name.Name)
-			if strings.HasPrefix(packageName, "test") {
+			if strings.Contains(packageName, "test") ||
+				strings.Contains(packageName, "mock") ||
+				strings.Contains(packageName, "fixture") {
 				// early return, we dont want to add test stuff to context.
 				return false
 			}
@@ -65,7 +67,9 @@ func generateContext(model int, node *ast.File) []string {
 		case *ast.FuncDecl:
 			funcName := sanitizeName(x.Name.Name)
 			packageName := sanitizeName(parentPackage.Name.Name)
-			if strings.HasPrefix(funcName, "test") {
+			if strings.Contains(funcName, "test") ||
+				strings.Contains(funcName, "mock") ||
+				strings.Contains(funcName, "fixture") {
 				// early return, we dont want to add test stuff to context.
 				return false
 			}
