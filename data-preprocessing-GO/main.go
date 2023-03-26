@@ -10,7 +10,16 @@ import (
 
 func main() {
 	dir := os.Args[1]
-	modelChoice := os.Args[2]
+	if os.Args[1] == "" {
+		fmt.Println("Please provide a directory")
+		return
+	}
+	var modelChoice string
+	if os.Args[2] == "" {
+		modelChoice = "fast"
+	} else {
+		modelChoice = os.Args[2]
+	}
 	model, err := astParser.GetModel(modelChoice)
 	if err != nil {
 		fmt.Print(err)
