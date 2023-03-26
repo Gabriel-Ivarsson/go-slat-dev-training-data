@@ -9,13 +9,13 @@ import (
 )
 
 func main() {
-	if os.Args[1] == "" {
+	if len(os.Args) < 1 {
 		fmt.Println("Please provide a directory")
 		return
 	}
 	dir := os.Args[1]
 	var modelChoice string
-	if os.Args[2] == "" {
+	if len(os.Args) < 2 {
 		modelChoice = "fast"
 	} else {
 		modelChoice = os.Args[2]
