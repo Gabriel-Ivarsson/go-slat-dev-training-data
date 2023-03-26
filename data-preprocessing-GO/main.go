@@ -9,11 +9,11 @@ import (
 )
 
 func main() {
-	dir := os.Args[1]
 	if os.Args[1] == "" {
 		fmt.Println("Please provide a directory")
 		return
 	}
+	dir := os.Args[1]
 	var modelChoice string
 	if os.Args[2] == "" {
 		modelChoice = "fast"
